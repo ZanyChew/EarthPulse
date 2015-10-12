@@ -1,0 +1,27 @@
+.button {
+  margin: 0 0 0 5px;
+  text-indent: -9999px;
+  cursor: pointer;
+  width: 29px;
+  height: 29px;
+  float: left;
+  text-align: center;
+  background: url(../images/buttons.png) no-repeat;
+}
+.dec {
+  background-position: 0 -29px;
+}
+
+.buttons {
+  padding: 20px 0 0 140px;
+}
+
+.dropdown-menu > li > a {
+    display: inline-block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 5.4285;
+    color: #113333;
+    white-space: nowrap;
+}

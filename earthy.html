@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>EarthPulse</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<link rel="stylesheet" type="text/css" href="css/tabs.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="js/tabs.js"></script>
+		<script src="js/excursionButtons.js"></script>
+		<script src="js/dropdownTravel.js"></script>
+
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="main">
+				<!-- First Tab -->
+				<div class="tabs animated-fade">
+					<ul class="tab-links">
+						<li class="active"><a href="#tab1">Map</a></li>
+						<li><a href="#tab2">Resources</a></li>
+						<li><a href="#tab3">Travel Advisory</a></li>
+					</ul>
+
+					<div class="tab-content" style="width:780px;height:400px;margin:-16px 0px 0px 40px">
+						<div id="tab1" class="tab active" style="display: block;">
+							<p>Map here</p>
+						</div>
+
+						<div id="tab2" class="tab" style="display: none;">
+							<p>Resources here</p>
+						</div>
+
+						<div id="tab3" class="tab" style="display: none;">
+							<p>Travel Advisory here</p>
+
+
+
+
+								<div class="container">
+
+								<p>Travel Advisory for </p>
+									<div class="btn-group">
+										<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Select a Country <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Thailand</a></li>
+											<li><a href="#">Malaysia</a></li>
+											<li><a href="#">Indonesia</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Other</a></li>
+										</ul>
+									</div>
+
+
+								</div>
+
+
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Second Tab -->
+				<div class="tabs animated-fade">
+					<ul class="tab-links" style="margin-left:170px">
+						<li class="active"><a href="#tab4">News</a></li>
+						<li><a href="#tab5">Notifications</a></li>
+
+
+
+					</ul>
+
+					<div class="tab-content" style="width:370px;height:400px;margin:-16px 0px 0px -4px">
+						<div id="tab4" class="tab active" style="display: block;">
+							<p>News here</p>
+						</div>
+
+						<div id="tab5" class="tab" style="display: none;">
+							<p>Notifications here</p>
+							<ul class="list-group">
+  <li class="list-group-item"><b>Project Shine </b> - Tropical cyclone moving towards Chiang Mai, heavy rains, strong winds expected</li>
+  <li class="list-group-item"><b>Project Shine</b> - Tropical cyclone upgraded to catergory 4</li>
+  <li class="list-group-item"><b>Cultural immersion trip to Batam, Indonesia</b> - Expect moderate flooding at Batam town Center</li>
+  <li class="list-group-item"><b>Nanjing Overseas Immersion Trip</b> - Smog clears as winds change direction</li>
+  <li class="list-group-item"><b>Nanjing Overseas Immersion Trip</b> - Smog expected to affect parts of Eastern China</li>
+</ul>
+						</div>
+					</div>
+				</div>
+
+				<!--notification-->
+				<!--
+				<div class="btn-group">
+					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Notification<span class="caret"></span></a>
+					<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+						<li><a href="#"><b>Project Shine </b> - Tropical cyclone moving towards Chiang Mai, heavy rains, strong winds expected</a></li>
+						<li class="divider"></li>
+						<li><a href="#"><b>Project Shine</b> - Tropical cyclone upgraded to catergory 4</a></li>
+						<li class="divider"></li>
+						<li><a href="#"><b>Cultural immersion trip to Batam, Indonesia</b> - Expect moderate flooding at Batam town Center</a></li>
+						<li class="divider"></li>
+						<li><a href="#"><b>Nanjing Overseas Immersion Trip</b> - Smog clears as winds change direction</a></li>
+						<li class="divider"></li>
+						<li><a href="#"><b>Nanjing Overseas Immersion Trip</b> - Smog expected to affect parts of Eastern China</a></li>
+
+					</ul>
+				</div>
+				-->
+
+				<table>
+					<tr>
+						<td>
+							<div class="tab-content" style="width:780px;height:300px;margin:-5px 0px 0px 37px"><div style="height:250px;overflow:auto;">								<table border="1" style="width:100%">									<tr>										<td>Project Shine @ Chiang Mai</td>										<td>Nanyang Polytechnic</td>										<td>											<form method="post" action="">												<input type="text" name="alert1" id="alert1" value="3">												<div class="inc button" align="right">+</div>											</br>										</br>										<div class="dec button" align="right">-</div>																</form>								</td>							</tr>							<tr>								<td>Cultural Immersion Trip to Botom, Indonesia</td>								<td>PeiHua Secondary</td>								<td>									<form method="post" action="">										<input type="text" name="alert2" id="alert1" value="3">										<div class="inc button" align="right">+</div>									</br>								</br>								<div class="dec button" align="right">-</div>							</form>						</td>					</tr>					<tr>						<td>Nanjing Overseas Immersion Trip</td>						<td>Victoria School</td>						<td>							<form method="post" action="">								<input type="text" name="alert3" id="alert1" value="3">								<div class="inc button" align="right">+</div>							</br>						</br>						<div class="dec button" align="right">-</div>					</form>				</td>			</tr>			<tr>				<td>Cultural Enrichment to Bintan, Indonesia</td>				<td>Singapore Sport School</td>				<td>					<form method="post" action="">						<input type="text" name="alert4" id="alert1" value="3">						<div class="inc button" align="right">+</div>					</br>				</br>				<div class="dec button" align="right">-</div>			</form>		</td>	</tr>	<tr>		<td>Muji Mayor's Cup - Football</td>		<td>Raffles Institution</td>		<td>			<form method="post" action="">				<input type="text" name="alert5" id="alert1" value="3">				<div class="inc button" align="right">+</div>			</br>		</br>		<div class="dec button" align="right">-</div>	</form></td></tr></table></div>							</div>
+						</td>
+						<td>
+							<div class="tab-content" style="width:370px;height:300px;margin:-5px 0px 0px -4px">								EarthPulse Chat
+								<script type="text/javascript" src = "http://free-shoutbox.net/app/webroot/shoutbox/sb.php?shoutbox=74453794"></script>							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
