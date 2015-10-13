@@ -6,38 +6,64 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	
+		<!-- External CSS -->
 		<link rel="stylesheet" type="text/css" href="css/tabs.css">
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+		<link rel="stylesheet" href="css/jquery.jscrollpane.css"  />
 
+		<!-- External JavaScript -->
 		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 		<script type="text/javascript" src="js/tabs.js"></script>
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.scroll-pane').jScrollPane();
+			});
+		</script>
 		
-		<script>
-			function changealertHigh(name){
-				document.getElementById(name).innerHTML = "High";
-				document.getElementById(name).style.backgroundColor = '#E55451';
+		<!-- Custom JavaScript -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var allAlertList = document.getElementsByClassName("alertList");
+				
+				for(i = 0; i < allAlertList.length; i++){
+					changeAlert(allAlertList[i].id, allAlertList[i].value);
+				}
+			});
+		
+			function changeAlert(id, value){
+				var parentId = id + "box";
+			
+				if(value == "High"){
+					document.getElementById(id).style.backgroundColor = 'red';
+					document.getElementById(parentId).style.backgroundColor = 'red';
+				}
+				else if(value == "Medium"){
+					document.getElementById(id).style.backgroundColor = 'orange';
+					document.getElementById(parentId).style.backgroundColor = 'orange';
+				}
+				else{
+					document.getElementById(id).style.backgroundColor = 'green';
+					document.getElementById(parentId).style.backgroundColor = 'green';
+				}
 			}
 		</script>
-
-		<script>
-			function changealertMedium(name){
-				document.getElementById(name).innerHTML = "Medium";
-				document.getElementById(name).style.backgroundColor = '#FFF380';
-				document.getElementById(name).style.color = "black";
+		
+		<!-- Custom CSS -->
+		<style>
+			.selectBorderless{
+				background:transparent;
+				border:0px;
+				outline:0px;
+				font-weight:bold;
 			}
-		</script>
-
-		<script>
-			function changealertLow(name){
-				document.getElementById(name).innerHTML = "Low";
-				document.getElementById(name).style.backgroundColor = '#54C571';
-			}
-		</script>
+		</style>
 	</head>
 	<body>
 		<div class="wrap">
 			<div class="main">
-				<!-- First Tab -->
+				<!-- First Group of Tabs -->
 				<div class="tabs animated-fade">
 					<ul class="tab-links">
 						<li class="active"><a href="#tab1">Map</a></li>
@@ -45,9 +71,10 @@
 						<li><a href="#tab3">Travel Advisory</a></li>
 					</ul>
 
-					<div class="tab-content" style="width:780px;height:400px;margin:-16px 0px 0px 40px">
+					
+					<div class="tab-content" style="width:780px;height:350px;margin:-16px 0px 0px 40px">
+						<!-- Map -->
 						<div id="tab1" class="tab active" style="display: block;">
-                            <p><b>Monitoring Map</b></p>
                             <table>
                                 <tr>
                                     <td></td>
@@ -57,16 +84,26 @@
                                     <td></td>
                                 </tr>
                             </table>
-                                
                         </div>
+						
+						<!-- Resources -->
 						<div id="tab2" class="tab" style="display: none;">
-							<p><b>Resources</b></p>
-                            
+							<table>
+                                <tr>
+                                    <td >
+                                        <select>
+											<option value="#">View All Resources</option>
+											<option>Counsellor</option>
+											<option>Liaison Officer</option>
+											<option>Comms Officer</option>
+										</select>
+                                    </td>
+                                </tr>
+                            </table>
 						</div>
 
+						<!-- Travel Advisory -->
 						<div id="tab3" class="tab" style="display: none;">
-							<p><b>Travel Advisory</b></p>
-							
 							<table>
 								<tr>
 									<td>
@@ -79,50 +116,57 @@
 									</td>
 								</tr>
 								<tr>
-									<div id="advisory"><div>
+									<div id="advisory">
+										
+									<div>
 								</tr>
 							</table>
 						</div>
 					</div>
 				</div>
 				
-				<!-- Second Tab -->
+				<!-- Second Group of Tabs -->
 				<div class="tabs animated-fade">
 					<ul class="tab-links" style="margin-left:170px">
 						<li class="active"><a href="#tab4">News</a></li>
 						<li><a href="#tab5">Notifications</a></li>
 					</ul>
 
-					<div class="tab-content" style="width:370px;height:400px;margin:-16px 0px 0px -4px">
+					<div class="tab-content" style="width:370px;height:350px;margin:-16px 0px 0px -4px">
+						<!-- News -->
 						<div id="tab4" class="tab active" style="display: block;">
-							<p><b>News</b></p>
+							<table>
+								<tr>
+									<td>
+										Japan flooding: 2.8 million advised to evacuate
+							
+										<br /><br />
+										
+										7.1 magnitude earthquake hits Pakistan
+										
+										<br /><br />
+										
+										Final death toll set at 173 in China warehouse explosion
+										
+										<br /><br />
+										
+										Flash floods hit Kelantan, Malaysia
+									</td>
+								</tr>
+							</table>
 						</div>
 
+						<!-- Notifications -->
 						<div id="tab5" class="tab" style="display: none;">
-							<p><b>Notifications</b></p>
-							<table border="1">
+							<table>
 								<tr>
-									<td style="padding:5px">
+									<td>
 										<b>Project Shine </b> - Tropical cyclone moving towards Chiang Mai, heavy rains, strong winds expected
-									</td>
-								</tr>
-								<tr>
-									<td style="padding:5px">
+										<br /><br />
 										<b>Project Shine</b> - Tropical cyclone upgraded to catergory 4
-									</td>
-								</tr>
-								<tr>
-									<td style="padding:5px">
+										<br /><br />
 										<b>Cultural immersion trip to Batam, Indonesia</b> - Expect moderate flooding at Batam town Center
-									</td>
-								</tr>
-								<tr>
-									<td style="padding:5px">
-										<b>Nanjing Overseas Immersion Trip</b> - Smog clears as winds change direction
-									</td>
-								</tr>
-								<tr>
-									<td style="padding:5px">
+										<br /><br />
 										<b>Nanjing Overseas Immersion Trip</b> - Smog expected to affect parts of Eastern China
 									</td>
 								</tr>
@@ -134,10 +178,9 @@
 				<table>
 					<tr>
 						<td>
-							<div class="tab-content" style="width:780px;height:300px;margin:-5px 0px 0px 37px">								<b>Excursion List</b>
-								<br /><br />
+							<div class="tab-content" style="width:780px;height:290px;margin:-5px 0px 0px 37px;overflow:auto">
                                 <table border="1">
-									<tr>
+									<tr style="text-align:center">
 										<td style="padding:5px">
 											<b>Excursion Name</b>
 										</td>
@@ -162,19 +205,17 @@
 											Nanyang Polytechnic
 										</td>
 										<td style="padding:5px">
-											<img src="warning.jpg" width="30px"/> <b>2</b>
+											<img src="warning.jpg" width="30px"/>
+										</td>
+										<td id="alert1box" style="padding:5px">
+											<select id="alert1" class="selectBorderless alertList" onChange="changeAlert(this.id, this.value)">
+												<option value="High" style="background-color:red">High</option>
+												<option value="Medium" style="background-color:orange">Medium</option>
+												<option value="Low" style="background-color:green">Low</option>
+											</select>
 										</td>
 										<td style="padding:5px">
-											<div id="alert1">
-												<select>
-													<option value="red" onclick="changealertHigh('alert1')">High</option>
-													<option value="red" onclick="changealertMedium('alert1')">Medium</option>
-													<option value="red" onclick="changealertLow('alert1')">Low</option>
-												</select>
-											</div>
-										</td>
-										<td style="padding:5px">
-											<img src="chat.svg" width="40px"/>
+											<img src="chat.svg" width="30px"/>
 										</td>
 									</tr>
 									<tr>
@@ -187,11 +228,15 @@
 										<td style="padding:5px">
 											<img src="warning.jpg" width="30px"/>
 										</td>
-										<td style="padding:5px">
-											
+										<td id="alert2box" style="padding:5px">
+											<select id="alert2" class="selectBorderless alertList" onChange="changeAlert(this.id, this.value)">
+												<option value="High" style="background-color:red">High</option>
+												<option value="Medium" style="background-color:orange">Medium</option>
+												<option value="Low" style="background-color:green" selected="selected">Low</option>
+											</select>
 										</td>
 										<td style="padding:5px">
-											<img src="chat.svg" width="40px"/>
+											<img src="chat.svg" width="30px"/>
 										</td>
 									</tr>
 									<tr>
@@ -204,11 +249,15 @@
 										<td style="padding:5px">
 											<img src="warning.jpg" width="30px"/>
 										</td>
-										<td style="padding:5px">
-											
+										<td id="alert3box" style="padding:5px">
+											<select id="alert3" class="selectBorderless alertList" onChange="changeAlert(this.id, this.value)">
+												<option value="High" style="background-color:red">High</option>
+												<option value="Medium" style="background-color:orange">Medium</option>
+												<option value="Low" style="background-color:green" selected="selected">Low</option>
+											</select>
 										</td>
 										<td style="padding:5px">
-											<img src="chat.svg" width="40px"/>
+											<img src="chat.svg" width="30px"/>
 										</td>
 									</tr>
 									<tr>
@@ -221,17 +270,42 @@
 										<td style="padding:5px">
 											<img src="warning.jpg" width="30px"/>
 										</td>
-										<td style="padding:5px">
-											
+										<td id="alert4box" style="padding:5px">
+											<select id="alert4" class="selectBorderless alertList" onChange="changeAlert(this.id, this.value)">
+												<option value="High" style="background-color:red">High</option>
+												<option value="Medium" style="background-color:orange">Medium</option>
+												<option value="Low" style="background-color:green" selected="selected">Low</option>
+											</select>
 										</td>
 										<td style="padding:5px">
-											<img src="chat.svg" width="40px"/>
+											<img src="chat.svg" width="30px"/>
+										</td>
+									</tr>
+									<tr>
+										<td style="padding:5px">
+											Muji Mayor's Cup - Football
+										</td>
+										<td style="padding:5px">
+											Raffles Institution
+										</td>
+										<td style="padding:5px">
+											<img src="warning.jpg" width="30px"/>
+										</td>
+										<td id="alert5box" style="padding:5px">
+											<select id="alert5" class="selectBorderless alertList" onChange="changeAlert(this.id, this.value)">
+												<option value="High" style="background-color:red">High</option>
+												<option value="Medium" style="background-color:orange">Medium</option>
+												<option value="Low" style="background-color:green" selected="selected">Low</option>
+											</select>
+										</td>
+										<td style="padding:5px">
+											<img src="chat.svg" width="30px"/>
 										</td>
 									</tr>
 								</table>							</div>
 						</td>
 						<td>
-							<div class="tab-content" style="width:370px;height:300px;margin:-5px 0px 0px -4px">								<b>Chat</b>
+							<div class="tab-content" style="width:370px;height:290px;margin:-5px 0px 0px -4px">
 								<iframe width="360" height="290" src="http://cdn.livestream.com/embed/earthpulse?layout=6&showTimestamp=true&height=290&width=360" style="border:0;outline:0" frameborder="0" scrolling="no" bgcolor="#ffffff"></iframe>							</div>
 						</td>
 					</tr>
