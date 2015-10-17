@@ -441,9 +441,9 @@ include_once "mysqli.connect.php";
 										<br /><br />
 										<b>Project Shine</b> - Tropical cyclone upgraded to category 4, light rains.
 										<br /><br />
-										<b>Cultural immersion trip to Batam, Indonesia</b> - Expect moderate flooding at Batam town Center.
+										<b>Beyond Boundaries</b> - Expect moderate flooding at Yogyakarta town Center, Indonesia.
 										<br /><br />
-										<b>Nanjing Overseas Immersion Trip</b> - Smog expected to affect parts of Eastern China.
+										<b>SAP - China, Wuxi 2015</b> - Smog expected to affect parts of Eastern China.
 									</td>
 								</tr>
 							</table>
@@ -491,7 +491,7 @@ include_once "mysqli.connect.php";
 											echo '<td style="padding:5px">' . $array[$i]['Excursion'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['City'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['School'] . '</td>';
-											echo '<td style="padding:5px">	<img src="warning.jpg" width="30px"/>	</td>';
+											echo '<td style="padding:5px">	<img src="warning.svg" width="30px"/>	</td>';
 											
 											echo '<td id="alert' . $excursionIndex . 'box" style="padding:5px">
 													<select id="alert' . $excursionIndex . '" class="selectBorderless alertList" onChange="changeAlert(this.id, this.value)">';
