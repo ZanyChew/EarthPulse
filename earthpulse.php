@@ -12,6 +12,7 @@ include_once "mysqli.connect.php";
 	
 		<!-- External CSS -->
 		<link rel="stylesheet" type="text/css" href="css/tabs.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
 		<link rel="stylesheet" href="css/jquery.jscrollpane.css" />
 		<link rel="stylesheet" href="css/card.css" />
@@ -54,7 +55,57 @@ include_once "mysqli.connect.php";
 					document.getElementById(parentId).style.backgroundColor = 'green';
 				}
 			}
+            
+            
+            			window.selectResources = function(e){
+    if(e.value=="allResources"){
+			document.getElementById("couns1").style.display = "block";
+			document.getElementById("couns2").style.display = "block";
+			document.getElementById("couns3").style.display = "block";
+			document.getElementById("liai1").style.display = "block";
+			document.getElementById("liai2").style.display = "block";
+			document.getElementById("liai3").style.display = "block";
+			document.getElementById("comm1").style.display = "block";
+			document.getElementById("comm2").style.display = "block";
+    }
+    else if(e.value=="counsellors"){
+			document.getElementById("couns1").style.display = "block";
+			document.getElementById("couns2").style.display = "block";
+			document.getElementById("couns3").style.display = "block";
+			document.getElementById("liai1").style.display = "none";
+			document.getElementById("liai2").style.display = "none";
+			document.getElementById("liai3").style.display = "none";
+			document.getElementById("comm1").style.display = "none";
+			document.getElementById("comm2").style.display = "none";
+    }
+    else if(e.value == "liaison"){
+			document.getElementById("couns1").style.display = "none";
+			document.getElementById("couns2").style.display = "none";
+			document.getElementById("couns3").style.display = "none";
+			document.getElementById("liai1").style.display = "block";
+			document.getElementById("liai2").style.display = "block";
+			document.getElementById("liai3").style.display = "block";
+			document.getElementById("comm1").style.display = "none";
+			document.getElementById("comm2").style.display = "none";
+    }
+		else if(e.value == "comm"){
+			document.getElementById("couns1").style.display = "none";
+			document.getElementById("couns2").style.display = "none";
+			document.getElementById("couns3").style.display = "none";
+			document.getElementById("liai1").style.display = "none";
+			document.getElementById("liai2").style.display = "none";
+			document.getElementById("liai3").style.display = "none";
+			document.getElementById("comm1").style.display = "block";
+			document.getElementById("comm2").style.display = "block";
+		}
+}
+
+		function changeResStt(reso,stt,boss){
+			document.getElementById(reso).innerHTML = "(" + stt + ")";
+			document.getElementById("updatePanel").innerHTML = document.getElementById("updatePanel").innerHTML + "<li class=\"list-group-item\">"+ document.getElementById(boss).innerHTML + " is " + stt + "</li>";
+		}
 			
+            
 			function changeAdvisory(value){
 				if(value == "Thailand"){
 					document.getElementById("advisory").innerHTML = '<table><tr><td>Heightened cyclone activity in Thailand may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
@@ -114,205 +165,216 @@ include_once "mysqli.connect.php";
 						
 						<!-- Resources -->
 						<div id="tab2" class="tab" style="display:none;">
+
+							<ul id = "updatePanel" style="position:absolute;left:683px;top:65px;display:block;width:170px" class="list-group">
+								<li class="list-group-item">Summary</li>
+
+							</ul>
+
 							<table>
                                 <tr>
                                     <td >
-                                        <select>
-											<option value="#">View All Resources</option>
-											<option>Counsellor</option>
-											<option>Liaison Officer</option>
-											<option>Comms Officer</option>
-										</select>
+																			<select name = "resSel" onchange="selectResources(this);">
+    <option selected = "selected">--Select Resources--</option>
+    <option value = "allResources">Select All Resources</option>
+    <option value = "counsellors">Counsellors</option>
+    <option value = "liaison">Liaison Officers</option>
+		<option value = "comm">Comms Officers</option>
+</select>
                                     </td>
                                 </tr>
                             </table>
-							
-							<div class="card effect__hover">
+
+
+							<div id = "couns1" style="display:none" class="card effect__hover">
 								<div class="card__front">
 									<span class="card__text">
 										Counsellor
 										<br />
-										Mary Tan
+										<a id="couns1name">Mary Tan</a>
 										<br />
-										Available
+										<b id="couns1stt">(Available)</b>
 										<br />
 									</span>
 								</div>
-								
+
 								<div class="card__back">
 									<span class="card__text">
-										<input type="radio" name="counsellor1" value="Activate">Activate
+										<input name="counsellor1" type="radio" value="Activate" onclick="changeResStt('couns1stt','Activated','couns1name')">Activate
 										<br>
-										<input type="radio" name="counsellor1" value="Standby">Standby
+										<input name="counsellor1" type="radio" value="Standby" onclick="changeResStt('couns1stt','Standing By','couns1name')">Standby
 										<br>
-										<input type="radio" name="counsellor1" value="Available" checked="checked">Available
+										<input name="counsellor1" type="radio" value="Available" onclick="changeResStt('couns1stt','Available','couns1name')" checked="checked">Available
 									</span>
 								</div>
 							</div>
-							
-							<div class="card effect__hover">
+
+							<div id = "couns2" style="display:none" class="card effect__hover">
 								<div class="card__front">
 									<span class="card__text">
 										Counsellor
 										<br />
-										Tommy Tan
+										<a id="couns2name">Tommy Tan</a>
 										<br />
-										Available
+										<b id="couns2stt">(Available)</b>
 										<br />
 									</span>
 								</div>
-								
+
 								<div class="card__back">
 									<span class="card__text">
-										<input type="radio" name="counsellor2" value="Activate">Activate
+										<input name="counsellor2" type="radio" value="Activate" onclick="changeResStt('couns2stt','Activated','couns2name')">Activate
 										<br>
-										<input type="radio" name="counsellor2" value="Standby">Standby
+										<input name="counsellor2" type="radio" value="Standby" onclick="changeResStt('couns2stt','Standing By','couns2name')">Standby
 										<br>
-										<input type="radio" name="counsellor2" value="Available" checked="checked">Available
+										<input name="counsellor2" type="radio" value="Available" onclick="changeResStt('couns2stt','Available','couns2name')" checked="checked">Available
 									</span>
 								</div>
 							</div>
-							
-							<div class="card effect__hover">
+
+							<div id = "couns3" style="display:none" class="card effect__hover">
 								<div class="card__front">
 									<span class="card__text">
 										Counsellor
 										<br />
-										Gary Tan
+										<a id="couns3name">Gary Tan</a>
 										<br />
-										Available
+										<b id="couns3stt">(Available)</b>
 										<br />
 									</span>
 								</div>
-								
+
 								<div class="card__back">
 									<span class="card__text">
-										<input type="radio" name="counsellor3" value="Activate">Activate
+										<input name="counsellor3" type="radio" value="Activate" onclick="changeResStt('couns3stt','Activated','couns3name')">Activate
 										<br>
-										<input type="radio" name="counsellor3" value="Standby">Standby
+										<input name="counsellor3" type="radio" value="Standby" onclick="changeResStt('couns3stt','Standing By','couns3name')">Standby
 										<br>
-										<input type="radio" name="counsellor3" value="Available" checked="checked">Available
+										<input name="counsellor3" type="radio" value="Available" onclick="changeResStt('couns3stt','Available','couns3name')" checked="checked">Available
 									</span>
 								</div>
 							</div>
-							
-							<div class="card effect__hover">
+
+							<div id = "liai1" style="display:none" class="card effect__hover">
 								<div class="card__front">
 									<span class="card__text">
 										Liaison Officer
 										<br />
-										Mary Lee
+										<a id="liai1name">Mary Lee></a>
 										<br />
-										Available
+										<b id="liai1stt">(Available)</b>
 										<br />
 									</span>
 								</div>
-								
+
 								<div class="card__back">
 									<span class="card__text">
-										<input type="radio" name="liaison1" value="Activate">Activate
+										<input name="liaison1" type="radio" value="Activate" onclick="changeResStt('liai1stt','Activated','liai1name')">Activate
 										<br>
-										<input type="radio" name="liaison1" value="Standby">Standby
+										<input name="liaison1" type="radio" value="Standby" onclick="changeResStt('liai1stt','Standing By','liai1name')">Standby
 										<br>
-										<input type="radio" name="liaison1" value="Available" checked="checked">Available
+										<input name="liaison1" type="radio" value="Available" onclick="changeResStt('liai1stt','Available','liai1name')" checked="checked">Available
 									</span>
 								</div>
 							</div>
-							
-							<div class="card effect__hover">
+
+							<div id = "liai2" style="display:none" class="card effect__hover">
 								<div class="card__front">
 									<span class="card__text">
 										Liaison Officer
 										<br />
-										Tommy Lee
+										<a id="liai2name">Tommy Lee</a>
 										<br />
-										Available
+										<b id="liai2stt">(Available)</b>
 										<br />
 									</span>
 								</div>
-								
+
 								<div class="card__back">
 									<span class="card__text">
-										<input type="radio" name="liaison2" value="Activate">Activate
+										<input name="liaison2" type="radio" value="Activate" onclick="changeResStt('liai2stt','Activated','liai2name')">Activate
 										<br>
-										<input type="radio" name="liaison2" value="Standby">Standby
+										<input name="liaison2" type="radio" value="Standby" onclick="changeResStt('liai2stt','Standing By','liai2name')">Standby
 										<br>
-										<input type="radio" name="liaison2" value="Available" checked="checked">Available
+										<input name="liaison2" type="radio" value="Available" onclick="changeResStt('liai2stt','Available','liai2name')" checked="checked">Available
 									</span>
 								</div>
 							</div>
-							
-							<div class="card effect__hover">
+
+							<div id = "liai3" style="display:none" class="card effect__hover">
 								<div class="card__front">
 									<span class="card__text">
 										Liaison Officer
 										<br />
-										Gary Lee
+										<a id="liai3name">Gary Lee</a>
 										<br />
-										Available
+										<b id="liai3stt">(Available)</b>
 										<br />
 									</span>
 								</div>
-								
+
 								<div class="card__back">
 									<span class="card__text">
-										<input type="radio" name="liaison3" value="Activate">Activate
+										<input name="liaison3" type="radio" value="Activate" onclick="changeResStt('liai3stt','Activated','liai3name')">Activate
 										<br>
-										<input type="radio" name="liaison3" value="Standby">Standby
+										<input name="liaison3" type="radio" value="Standby" onclick="changeResStt('liai3stt','Standing By','liai3name')">Standby
 										<br>
-										<input type="radio" name="liaison3" value="Available" checked="checked">Available
+										<input name="liaison3" type="radio" value="Available" onclick="changeResStt('liai3stt','Available','liai3name')" checked="checked">Available
 									</span>
 								</div>
 							</div>
-							
-							<div class="card effect__hover">
+
+							<div id = "comm1" style="display:none" class="card effect__hover">
 								<div class="card__front">
 									<span class="card__text">
 										Comms Officer
 										<br />
-										Mary Yeow
+										<a id="comm1name">Mary Yeow</a>
 										<br />
-										Available
+										<b id="comm1stt">(Available)</b>
 										<br />
 									</span>
 								</div>
-								
+
 								<div class="card__back">
 									<span class="card__text">
-										<input type="radio" name="comms1" value="Activate">Activate
+										<input name="comms1" type="radio" value="Activate" onclick="changeResStt('comm1stt','Activated','comm1name')">Activate
 										<br>
-										<input type="radio" name="comms1" value="Standby">Standby
+										<input name="comms1" type="radio" value="Standby" onclick="changeResStt('comm1stt','Standing By','comm1name')">Standby
 										<br>
-										<input type="radio" name="comms1" value="Available" checked="checked">Available
+										<input name="comms1" type="radio" value="Available" onclick="changeResStt('comm1stt','Available','comm1name')" checked="checked">Available
 									</span>
 								</div>
 							</div>
-							
-							<div class="card effect__hover">
+
+							<div id = "comm2" style="display:none" class="card effect__hover">
 								<div class="card__front">
 									<span class="card__text">
 										Comms Officer
 										<br />
-										Tommy Yeow
+										<a id="comm2name">Tommy Yeow</a>
 										<br />
-										Available
+										<b id="comm2stt">(Available)</b>
 										<br />
 									</span>
 								</div>
-								
+
 								<div class="card__back">
 									<span class="card__text">
-										<input type="radio" name="comms2" value="Activate">Activate
+										<input name="comms2" type="radio" value="Activate" onclick="changeResStt('comm2stt','Activated','comm2name')">Activate
 										<br>
-										<input type="radio" name="comms2" value="Standby">Standby
+										<input name="comms2" type="radio" value="Standby" onclick="changeResStt('comm2stt','Standing By','comm2name')">Standby
 										<br>
-										<input type="radio" name="comms2" value="Available" checked="checked">Available
+										<input name="comms2" type="radio" value="Available" onclick="changeResStt('comm2stt','Available','comm2name')" checked="checked">Available
 									</span>
 								</div>
 							</div>
 						</div>
 
-						<!-- Travel Advisory -->
+						
+                        
+                        
+                        <!-- Travel Advisory -->
 						<div id="tab3" class="tab" style="display:none;">
 							<table>
 								<tr>
