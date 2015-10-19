@@ -22,8 +22,8 @@ $mail->addReplyTo('purum.sok.2013@sis.smu.edu.sg', 'Meow Lee');
 $mail->addAddress('purum.sok.2013@sis.smu.edu.sg', 'Meow Tan');
 
 $mail->Subject = 'EarthPulse Alert!';
-$mail->msgHTML('Tropical cyclone moving towards Chiang Mai, heavy rains, strong winds expected! <br /><br /> Project Shine - Nanyang Polytechnic <br /> October 17th: Chang Phueok <br /> October 18th: Chiang Mai');
-$mail->AltBody = 'Tropical cyclone moving towards Chiang Mai, heavy rains, strong winds expected! <br /><br /> Project Shine - Nanyang Polytechnic <br /> October 17th: Chang Phueok <br /> October 18th: Chiang Mai';
+$mail->msgHTML('Principal of NYP: Cyclone at Chiang Mai. Requesting assistance.');
+$mail->AltBody = 'Principal of NYP: Cyclone at Chiang Mai. Requesting assistance.';
 
 //$mail->addAttachment('images/phpmailer_mini.png');
 
