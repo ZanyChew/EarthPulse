@@ -217,7 +217,7 @@ include_once "mysqli.connect.php";
 						<li><a href="#tab3">Travel Advisory</a></li>
 					</ul>
 					
-					<div class="tab-content" style="width:780px;height:350px;margin:-16px 0px 0px 40px">
+					<div class="tab-content" style="width:780px;height:350px;margin:-12px 0px 0px 40px">
 						<!-- Map -->
 						<div id="tab1" class="tab active" style="display:block;">
                             <table>
@@ -460,12 +460,12 @@ include_once "mysqli.connect.php";
 				
 				<!-- Second Group of Tabs -->
 				<div class="tabs animated-fade">
-					<ul class="tab-links" style="margin-left:170px">
+					<ul class="tab-links" style="margin-left:155px">
 						<li class="active"><a href="#tab4">Notifications</a></li>
 						<li><a href="#tab5">News</a></li>
 					</ul>
 
-					<div class="tab-content" style="width:370px;height:350px;margin:-16px 0px 0px -4px">
+					<div class="tab-content" style="width:370px;height:350px;margin:-12px 0px 0px -3px">
 						<!-- Notifications -->
 						<div id="tab4" class="tab active" style="display:block">
 							<table>
@@ -543,24 +543,24 @@ include_once "mysqli.connect.php";
 									}
 								
 									if(mysqli_num_rows($result) != 0){                                
-										echo '<table border="1">
+										echo '<table border="1" id="excursionList">
 										<tr style="text-align:center">
-											<th style="padding:5px">
+											<th style="padding:10px">
 												Excursion Name
 											</th>
-											<th style="padding:5px">
+											<th style="padding:10px">
 												City
 											</th>
-											<th style="padding:5px">
+											<th style="padding:10px">
 												School
 											</th>
-											<th style="padding:5px">
+											<th style="padding:10px">
 												Notifications
 											</th>
-											<th style="padding:5px">
+											<th style="padding:10px">
 												Alert Level
 											</th>
-											<th style="padding:5px">
+											<th style="padding:10px">
 												Details
 											</th>
 										</tr>';
