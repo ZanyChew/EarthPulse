@@ -8,8 +8,12 @@ body {
 	border-collapse: collapse;
 }
 
-#excursionList th {
+#excursionList tr:nth-child(even) {
 	background-color: #eeeeee;
+}
+
+#excursionList th {
+	background-color: #cccccc;
 }
 
 .list-group-item {
