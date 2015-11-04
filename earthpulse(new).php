@@ -114,7 +114,7 @@ include_once "mysqli.connect.php";
             
 			function changeAdvisory(value){
 				if(value == "Thailand"){
-					document.getElementById("advisory").innerHTML = '<table><tr><td><b>Airports and all other transport services are operating as normal.</b> <br /> Last updated: 18-10-2015 4:25pm</td></tr></table>';
+					document.getElementById("advisory").innerHTML = '<table><tr><td>Heightened cyclone activity in Thailand may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
 				}
 				else if(value == "Malaysia"){
 					document.getElementById("advisory").innerHTML = '<table><tr><td>Heightened earthquake activity in Malaysia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
@@ -220,7 +220,7 @@ include_once "mysqli.connect.php";
                                 <tr>
                                     <td></td>
                                     <td >
-                                        <iframe height="360" width="770" frameborder="0" src="https://huaymunwan2013.cartodb.com/viz/986f42c2-755f-11e5-8ada-0ecfd53eb7d3/embed_map"></iframe>
+                                        <iframe height="360" width="770" frameborder="0" src="https://huaymunwan2013.cartodb.com/viz/56b63914-715c-11e5-b53e-0ea31932ec1d/embed_map" ></iframe>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -456,7 +456,7 @@ include_once "mysqli.connect.php";
 				
 				<!-- Second Group of Tabs -->
 				<div class="tabs animated-fade">
-					<ul class="tab-links" style="margin-left:155px">
+					<ul class="tab-links" style="margin-left:155px;">
 						<li class="active"><a href="#tab4">Notifications</a></li>
 						<li><a href="#tab5">News</a></li>
 					</ul>
@@ -475,11 +475,21 @@ include_once "mysqli.connect.php";
 										<b style="color:blue">17-10-2015 10:14am</b>
 										<br />
 										<b>Project Shine</b> - Tropical cyclone upgraded to category 4, light rains.
+										<br /><br />
+										
+										<b style="color:blue">17-10-2015 9:44am</b>
+										<br />
+										<b>Beyond Boundaries</b> - Expect moderate flooding at Yogyakarta town Center, Indonesia.
+										<br /><br />
+										
+										<b style="color:blue">17-10-2015 6:44am</b>
+										<br />
+										<b>SAP - China, Wuxi 2015</b> - Smog expected to affect parts of Eastern China.
 									</td>
 								</tr>
 							</table>
 						</div>
-						
+					
 						<!-- News -->
 						<div id="tab5" class="tab" style="display:none">
 							<table>
@@ -530,7 +540,7 @@ include_once "mysqli.connect.php";
 						<td>
 							<div class="tab-content" style="width:780px;height:290px;margin:-8px 0px 0px 37px;overflow:auto">
 								<?php
-									$query = 'SELECT * FROM trips WHERE Cluster = "NORTH9" ORDER BY ID DESC;';
+									$query = 'SELECT * FROM trips ORDER BY ID DESC;';
 
 									$result = mysqli_query($mysqli, $query);
 
@@ -556,16 +566,13 @@ include_once "mysqli.connect.php";
 											<th style="padding:10px">
 												Alert Level
 											</th>
-											<th style="padding:10px">
-												Details
-											</th>
 										</tr>';
 
 										for($i = 0; $i < count($array); $i++){
 											$excursionIndex = $i + 1;
 										
 											echo '<tr>';
-											echo '<td style="padding:5px">' . $array[$i]['Excursion'] . '</td>';
+											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">' . $array[$i]['Excursion'] . '</a></td>';
 											echo '<td style="padding:5px">' . $array[$i]['City'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['School'] . '</td>';
 											echo '<td style="padding:5px">	<img src="warning.svg" width="30px"/> &nbsp; ' . $array[$i]['Notification'] . '</td>';
@@ -588,8 +595,6 @@ include_once "mysqli.connect.php";
 																	<option value="Low" style="background-color:green" selected="selected">Low</option>';
 														}
 											echo '</select></td>';
-											
-											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">View</a>';
 											
 											echo '<div id="openModal' . $array[$i]['ID'] . '" class="modalDialog"><div><a href="#close" title="Close" class="close">X</a><h2>' . $array[$i]['Excursion'] . '</h2><p>' . $array[$i]['Details'] . '</p></div></div>';
 											

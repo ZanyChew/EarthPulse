@@ -56,7 +56,6 @@ include_once "mysqli.connect.php";
 				}
 			}
             
-            
             window.selectResources = function(e){
 				if(e.value=="allResources"){
 					document.getElementById("couns1").style.display = "block";
@@ -179,9 +178,6 @@ include_once "mysqli.connect.php";
 				padding: 5px 20px 13px 20px;
 				border-radius: 10px;
 				background: #fff;
-				background: -moz-linear-gradient(#fff, #999);
-				background: -webkit-linear-gradient(#fff, #999);
-				background: -o-linear-gradient(#fff, #999);
 			}
 			.close {
 				background: #606061;
@@ -526,12 +522,12 @@ include_once "mysqli.connect.php";
 								</tr>
 								<tr>
 									<td>
-										<input type="button" id="email" value="Email"/>
+										<input type="button" id="email" value="Demo Email"/>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<input type="button" id="email2" value="Email2"/>
+										<input type="button" id="email2" value="Demo Email 2"/>
 									</td>
 								</tr>
 							</table>
@@ -582,7 +578,7 @@ include_once "mysqli.connect.php";
 											echo '<td style="padding:5px">' . $array[$i]['Excursion'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['City'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['School'] . '</td>';
-											echo '<td style="padding:5px">	<img src="warning.svg" width="30px"/>	</td>';
+											echo '<td style="padding:5px">	<img src="warning.svg" width="30px"/> &nbsp; ' . $array[$i]['Notification'] . '</td>';
 											
 											echo '<td id="alert' . $excursionIndex . 'box" style="padding:5px">
 													<select id="alert' . $excursionIndex . '" class="selectBorderless alertList" onChange="changeAlert(this.id, this.value)">';
@@ -603,9 +599,9 @@ include_once "mysqli.connect.php";
 														}
 											echo '</select></td>';
 											
-											echo '<td style="padding:5px"><a href="#openModal">View</a>';
+											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">View</a>';
 											
-											echo '<div id="openModal" class="modalDialog"><div><a href="#close" title="Close" class="close">X</a><h2>' . $array[$i]['Excursion'] . '</h2><p>' . $array[$i]['Details'] . '</p></div></div>';
+											echo '<div id="openModal' . $array[$i]['ID'] . '" class="modalDialog"><div><a href="#close" title="Close" class="close">X</a><h2>' . $array[$i]['Excursion'] . '</h2><p>' . $array[$i]['Details'] . '</p></div></div>';
 											
 											echo '</td></tr>';
 										}

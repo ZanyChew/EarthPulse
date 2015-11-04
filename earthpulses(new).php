@@ -556,16 +556,13 @@ include_once "mysqli.connect.php";
 											<th style="padding:10px">
 												Alert Level
 											</th>
-											<th style="padding:10px">
-												Details
-											</th>
 										</tr>';
 
 										for($i = 0; $i < count($array); $i++){
 											$excursionIndex = $i + 1;
 										
 											echo '<tr>';
-											echo '<td style="padding:5px">' . $array[$i]['Excursion'] . '</td>';
+											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">' . $array[$i]['Excursion'] . '</a></td>';
 											echo '<td style="padding:5px">' . $array[$i]['City'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['School'] . '</td>';
 											echo '<td style="padding:5px">	<img src="warning.svg" width="30px"/> &nbsp; ' . $array[$i]['Notification'] . '</td>';
@@ -588,8 +585,6 @@ include_once "mysqli.connect.php";
 																	<option value="Low" style="background-color:green" selected="selected">Low</option>';
 														}
 											echo '</select></td>';
-											
-											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">View</a>';
 											
 											echo '<div id="openModal' . $array[$i]['ID'] . '" class="modalDialog"><div><a href="#close" title="Close" class="close">X</a><h2>' . $array[$i]['Excursion'] . '</h2><p>' . $array[$i]['Details'] . '</p></div></div>';
 											
