@@ -114,13 +114,13 @@ include_once "mysqli.connect.php";
             
 			function changeAdvisory(value){
 				if(value == "Thailand"){
-					document.getElementById("advisory").innerHTML = '<table><tr><td>Heightened cyclone activity in Thailand may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
+					document.getElementById("advisory").innerHTML = '<table><tr><td><p style="font-size:24px;">Thailand</p>Heightened cyclone activity in Thailand may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
 				}
 				else if(value == "Malaysia"){
-					document.getElementById("advisory").innerHTML = '<table><tr><td>Heightened earthquake activity in Malaysia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
+					document.getElementById("advisory").innerHTML = '<table><tr><td><p style="font-size:24px;">Malaysia</p>Heightened earthquake activity in Malaysia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
 				}
 				else{
-					document.getElementById("advisory").innerHTML = '<table><tr><td>Heightened tsunami activity in Indonesia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
+					document.getElementById("advisory").innerHTML = '<table><tr><td><p style="font-size:24px;">Indonesia</p>Heightened tsunami activity in Indonesia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
 				}
 			}
 			
