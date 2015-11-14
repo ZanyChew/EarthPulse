@@ -483,12 +483,12 @@ include_once "mysqli.connect.php";
 							<table>
 								<tr>
 									<td>
-										<b style="color:blue">18-10-2015 Just now</b>
+										<b style="color:blue">14-11-2015 Just now</b>
 										<br />
 										<b>Project Shine </b> - Tropical cyclone moving towards Chiang Mai, heavy rains, strong winds expected.
 										<br /><br />
 										
-										<b style="color:blue">17-10-2015 10:14am</b>
+										<b style="color:blue">13-11-2015 10:14am</b>
 										<br />
 										<b>Project Shine</b> - Tropical cyclone upgraded to category 4, light rains.
 									</td>
@@ -501,33 +501,34 @@ include_once "mysqli.connect.php";
 							<table>
 								<tr>
 									<td>
-										<b style="color:blue">18-10-2015 Just now</b>
+										<b style="color:blue">14-11-2015 Just now</b>
 										<br />
 										There is flood in Krong Poi Pet, Cambodia, but it does not affect any place in Thailand. Thailand is keeping a close watch on the flood.
 										<br /><br />
 									
-										<b style="color:blue">18-10-2015 4:00pm</b>
+										<b style="color:blue">14-11-2015 4:00pm</b>
 										<br />
 										Japan flooding: 2.8 million advised to evacuate
 										<br /><br />
 										
-										<b style="color:blue">18-10-2015 3:30pm</b>
+										<b style="color:blue">14-11-2015 3:30pm</b>
 										<br />
 										7.1 magnitude earthquake hits Pakistan
 										<br /><br />
 										
-										<b style="color:blue">18-10-2015 1:30pm</b>
+										<b style="color:blue">14-11-2015 1:30pm</b>
 										<br />
 										Final death toll set at 173 in China warehouse explosion
 										<br /><br />
 										
-										<b style="color:blue">18-10-2015 12:30pm</b>
+										<b style="color:blue">14-11-2015 12:30pm</b>
 										<br />
 										Flash floods hit Kelantan, Malaysia
 									</td>
 								</tr>
 								<tr>
 									<td>
+										<br /><br /><br /><br /><br />
 										<input type="button" id="email" value="Demo Email"/>
 									</td>
 								</tr>
