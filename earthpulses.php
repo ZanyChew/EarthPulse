@@ -104,7 +104,6 @@ include_once "mysqli.connect.php";
 
 				 var bossid = boss + "up";
 				 var elem = document.getElementById(bossid);
-				 //elem.parentNode.removeChild(elem);
 				 if(elem==null){
 					document.getElementById("updatePanel").innerHTML = document.getElementById("updatePanel").innerHTML + "<li id=\"" + boss + "up\" class=\"list-group-item\">"+ document.getElementById(boss).innerHTML + " is " + stt + "</li>";
 				 }else{
@@ -114,13 +113,20 @@ include_once "mysqli.connect.php";
             
 			function changeAdvisory(value){
 				if(value == "Thailand"){
-					document.getElementById("advisory").innerHTML = '<table><tr><td><p style="font-size:24px;">Thailand</p><b>Airports and all other transport services are operating as normal.</b> <br /> Last updated: 18-10-2015 4:25pm</td></tr></table>';
+					document.getElementById("advisory").innerHTML = '<table><tr><td><h1>Thailand</h1>Heightened cyclone activity in Thailand may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out. <br /><br /><br /><i><b>Last updated:</b> 13-11-2015 4:25pm</i></td><td><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15929614.296889476!2d92.43796332846281!3d12.903478225137691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304d8df747424db1%3A0x9ed72c880757e802!2sThailand!5e0!3m2!1sen!2ssg!4v1447401789829" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe></td></tr></table>';
 				}
 				else if(value == "Malaysia"){
-					document.getElementById("advisory").innerHTML = '<table><tr><td><p style="font-size:24px;">Malaysia</p>Heightened earthquake activity in Malaysia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
+					document.getElementById("advisory").innerHTML = '<table><tr><td><h1>Malaysia</h1>Heightened earthquake activity in Malaysia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out. <br /><br /><br /><i><b>Last updated:</b> 13-11-2015 4:25pm</i></td><td><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16300243.103428232!2d100.56002808432304!3d4.111226470849136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3034d3975f6730af%3A0x745969328211cd8!2sMalaysia!5e0!3m2!1sen!2ssg!4v1447402145285" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe></td></tr></table>';
 				}
 				else{
-					document.getElementById("advisory").innerHTML = '<table><tr><td><p style="font-size:24px;">Indonesia</p>Heightened tsunami activity in Indonesia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out.</td></tr></table>';
+					document.getElementById("advisory").innerHTML = '<table><tr><td><h1>Indonesia</h1>Heightened tsunami activity in Indonesia may prompt the closure of local airports. Reconfirm transport bookings with the relevant service providers. <br /><br />We do not hold specific information on flights or other transport services. <br /><br />Liasise with local contacts to confirm that routes are accessible before setting out. <br /><br /><br /><i><b>Last updated:</b> 13-11-2015 4:25pm</i></td><td><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32656558.11313053!2d99.5373489695865!3d-2.3732108535931826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sen!2ssg!4v1447402212928" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe></td></tr></table>';
+				}
+			}
+			
+			function confirmResources(){
+				var x;
+				if (confirm("Activate selected resources?") == true) {
+						alert("Resources have been activated!");
 				}
 			}
 			
@@ -140,6 +146,17 @@ include_once "mysqli.connect.php";
 						type: "POST"
 					});
 				});
+			});
+			
+			$(document).ready(function(){
+				document.getElementById("couns1").style.display = "block";
+				document.getElementById("couns2").style.display = "block";
+				document.getElementById("couns3").style.display = "block";
+				document.getElementById("liai1").style.display = "block";
+				document.getElementById("liai2").style.display = "block";
+				document.getElementById("liai3").style.display = "block";
+				document.getElementById("comm1").style.display = "block";
+				document.getElementById("comm2").style.display = "block";
 			});
 		</script>
 		
@@ -233,12 +250,13 @@ include_once "mysqli.connect.php";
 								<li class="list-group-item"><b>Summary</b></li>
 							</ul>
 
+							<button type="button" style="position:absolute;left:695px;top:400px" onclick="confirmResources()" class="btn btn-success">Activate Resources</button>
+							
 							<table>
                                 <tr>
                                     <td>
-										<select name="resSel" onchange="selectResources(this);">
-											<option selected="selected">--Select Resources--</option>
-											<option value="allResources">Select All Resources</option>
+										<select id="dropdownlist" name="resSel" onchange="selectResources(this);">
+											<option value="allResources" selected="selected">All Resources</option>
 											<option value="counsellors">Counsellors</option>
 											<option value="liaison">Liaison Officers</option>
 											<option value="comm">Comms Officers</option>
@@ -248,13 +266,11 @@ include_once "mysqli.connect.php";
                             </table>
 
 							<div id = "couns1" style="display:none" class="card effect__hover">
-								<div class="card__front">
+								<div class="card__front" style="background-color:#2171b5">
 									<span class="card__text">
-										Counsellor
+										<b><a id="couns1name">Emergency Response Committee</a></b>
 										<br />
-										<a id="couns1name">Mary Tan</a>
-										<br />
-										<b id="couns1stt">(Available)</b>
+										<b id="couns1stt" style="font-size:14px">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -271,13 +287,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "couns2" style="display:none" class="card effect__hover">
-								<div class="card__front">
+								<div class="card__front" style="background-color:#2171b5">
 									<span class="card__text">
-										Counsellor
+										<b style="font-size:14px">Counsellor</b>
 										<br />
 										<a id="couns2name">Tom Tan</a>
 										<br />
-										<b id="couns2stt">(Available)</b>
+										<b id="couns2stt" style="font-size:14px">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -294,13 +310,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "couns3" style="display:none" class="card effect__hover">
-								<div class="card__front">
+								<div class="card__front" style="background-color:#2171b5">
 									<span class="card__text">
-										Counsellor
+										<b style="font-size:14px">Counsellor</b>
 										<br />
 										<a id="couns3name">Gary Tan</a>
 										<br />
-										<b id="couns3stt">(Available)</b>
+										<b id="couns3stt" style="font-size:14px">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -317,13 +333,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "liai1" style="display:none" class="card effect__hover">
-								<div class="card__front">
+								<div class="card__front" style="background-color:#2171b5">
 									<span class="card__text">
-										Liaison Officer
+										<b style="font-size:14px">Liaison Officer</b>
 										<br />
 										<a id="liai1name">Mary Lee</a>
 										<br />
-										<b id="liai1stt">(Available)</b>
+										<b id="liai1stt" style="font-size:14px">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -339,14 +355,14 @@ include_once "mysqli.connect.php";
 								</div>
 							</div>
 
-							<div id = "liai2" style="display:none" class="card effect__hover">
-								<div class="card__front">
+							<div id = "liai2" style="display:none;clear:both" class="card effect__hover">
+								<div class="card__front" style="background-color:#2171b5">
 									<span class="card__text">
-										Liaison Officer
+										<b style="font-size:14px">Liaison Officer</b>
 										<br />
 										<a id="liai2name">Tom Lee</a>
 										<br />
-										<b id="liai2stt">(Available)</b>
+										<b id="liai2stt" style="font-size:14px">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -363,13 +379,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "liai3" style="display:none" class="card effect__hover">
-								<div class="card__front">
+								<div class="card__front" style="background-color:#2171b5">
 									<span class="card__text">
-										Liaison Officer
+										<b style="font-size:14px">Liaison Officer</b>
 										<br />
 										<a id="liai3name">Gary Lee</a>
 										<br />
-										<b id="liai3stt">(Available)</b>
+										<b id="liai3stt" style="font-size:14px">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -386,13 +402,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "comm1" style="display:none" class="card effect__hover">
-								<div class="card__front">
+								<div class="card__front" style="background-color:#2171b5">
 									<span class="card__text">
-										Comms Officer
+										<b style="font-size:14px">Comms Officer</b>
 										<br />
 										<a id="comm1name">Mary Eng</a>
 										<br />
-										<b id="comm1stt">(Available)</b>
+										<b id="comm1stt" style="font-size:14px">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -409,13 +425,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "comm2" style="display:none" class="card effect__hover">
-								<div class="card__front">
+								<div class="card__front" style="background-color:#2171b5">
 									<span class="card__text">
-										Comms Officer
+										<b style="font-size:14px">Comms Officer</b>
 										<br />
 										<a id="comm2name">Tom Eng</a>
 										<br />
-										<b id="comm2stt">(Available)</b>
+										<b id="comm2stt" style="font-size:14px">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -528,7 +544,7 @@ include_once "mysqli.connect.php";
 				<table>
 					<tr>
 						<td>
-							<div class="tab-content" style="width:780px;height:290px;margin:-8px 0px 0px 37px;overflow:auto">
+							<div class="tab-content" style="width:780px;height:290px;margin:-8px 0px 0px 37px;overflow:auto;font-size:15px">
 								<?php
 									$query = 'SELECT * FROM trips WHERE Cluster = "NORTH9" ORDER BY ID DESC;';
 
@@ -541,13 +557,13 @@ include_once "mysqli.connect.php";
 									if(mysqli_num_rows($result) != 0){                                
 										echo '<table border="1" id="excursionList">
 										<tr style="text-align:center">
-											<th style="padding:10px">
+											<th style="padding:10px;width:230px">
 												Excursion Name
 											</th>
-											<th style="padding:10px">
+											<th style="padding:10px;width:80px">
 												City
 											</th>
-											<th style="padding:10px">
+											<th style="padding:10px;width:180px">
 												School
 											</th>
 											<th style="padding:10px">
@@ -556,16 +572,13 @@ include_once "mysqli.connect.php";
 											<th style="padding:10px">
 												Alert Level
 											</th>
-											<th style="padding:10px">
-												Details
-											</th>
 										</tr>';
 
 										for($i = 0; $i < count($array); $i++){
 											$excursionIndex = $i + 1;
 										
 											echo '<tr>';
-											echo '<td style="padding:5px">' . $array[$i]['Excursion'] . '</td>';
+											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">' . $array[$i]['Excursion'] . '</a></td>';
 											echo '<td style="padding:5px">' . $array[$i]['City'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['School'] . '</td>';
 											echo '<td style="padding:5px">	<img src="warning.svg" width="30px"/> &nbsp; ' . $array[$i]['Notification'] . '</td>';
@@ -588,8 +601,6 @@ include_once "mysqli.connect.php";
 																	<option value="Low" style="background-color:green" selected="selected">Low</option>';
 														}
 											echo '</select></td>';
-											
-											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">View</a>';
 											
 											echo '<div id="openModal' . $array[$i]['ID'] . '" class="modalDialog"><div><a href="#close" title="Close" class="close">X</a><h2>' . $array[$i]['Excursion'] . '</h2><p>' . $array[$i]['Details'] . '</p></div></div>';
 											

@@ -104,6 +104,7 @@ include_once "mysqli.connect.php";
 
 				 var bossid = boss + "up";
 				 var elem = document.getElementById(bossid);
+				 //elem.parentNode.removeChild(elem);
 				 if(elem==null){
 					document.getElementById("updatePanel").innerHTML = document.getElementById("updatePanel").innerHTML + "<li id=\"" + boss + "up\" class=\"list-group-item\">"+ document.getElementById(boss).innerHTML + " is " + stt + "</li>";
 				 }else{
@@ -123,13 +124,6 @@ include_once "mysqli.connect.php";
 				}
 			}
 			
-			function confirmResources(){
-				var x;
-				if (confirm("Activate selected resources?") == true) {
-						alert("Resources have been activated!");
-				}
-			}
-			
 			$(document).ready(function(){
 				$('#email').click(function(){
 					$.ajax({
@@ -146,17 +140,6 @@ include_once "mysqli.connect.php";
 						type: "POST"
 					});
 				});
-			});
-			
-			$(document).ready(function(){
-				document.getElementById("couns1").style.display = "block";
-				document.getElementById("couns2").style.display = "block";
-				document.getElementById("couns3").style.display = "block";
-				document.getElementById("liai1").style.display = "block";
-				document.getElementById("liai2").style.display = "block";
-				document.getElementById("liai3").style.display = "block";
-				document.getElementById("comm1").style.display = "block";
-				document.getElementById("comm2").style.display = "block";
 			});
 		</script>
 		
@@ -249,14 +232,13 @@ include_once "mysqli.connect.php";
 							<ul id="updatePanel" style="position:absolute;left:690px;top:65px;display:block;width:160px;text-align:center;font-size:14px" class="list-group">
 								<li class="list-group-item"><b>Summary</b></li>
 							</ul>
-							
-							<button type="button" style="position:absolute;left:695px;top:400px" onclick="confirmResources()" class="btn btn-success">Activate Resources</button>
 
 							<table>
                                 <tr>
                                     <td>
-										<select id="dropdownlist" name="resSel" onchange="selectResources(this);">
-											<option value="allResources" selected="selected">All Resources</option>
+										<select name="resSel" onchange="selectResources(this);">
+											<option selected="selected">--Select Resources--</option>
+											<option value="allResources">Select All Resources</option>
 											<option value="counsellors">Counsellors</option>
 											<option value="liaison">Liaison Officers</option>
 											<option value="comm">Comms Officers</option>
@@ -266,11 +248,13 @@ include_once "mysqli.connect.php";
                             </table>
 
 							<div id = "couns1" style="display:none" class="card effect__hover">
-								<div class="card__front" style="background-color:#2171b5">
+								<div class="card__front">
 									<span class="card__text">
-										<b><a id="couns1name">Emergency Response Committee</a></b>
+										Counsellor
 										<br />
-										<b id="couns1stt" style="font-size:14px">(Available)</b>
+										<a id="couns1name">Mary Tan</a>
+										<br />
+										<b id="couns1stt">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -287,13 +271,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "couns2" style="display:none" class="card effect__hover">
-								<div class="card__front" style="background-color:#2171b5">
+								<div class="card__front">
 									<span class="card__text">
-										<b style="font-size:14px">Counsellor</b>
+										Counsellor
 										<br />
 										<a id="couns2name">Tom Tan</a>
 										<br />
-										<b id="couns2stt" style="font-size:14px">(Available)</b>
+										<b id="couns2stt">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -310,13 +294,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "couns3" style="display:none" class="card effect__hover">
-								<div class="card__front" style="background-color:#2171b5">
+								<div class="card__front">
 									<span class="card__text">
-										<b style="font-size:14px">Counsellor</b>
+										Counsellor
 										<br />
 										<a id="couns3name">Gary Tan</a>
 										<br />
-										<b id="couns3stt" style="font-size:14px">(Available)</b>
+										<b id="couns3stt">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -333,13 +317,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "liai1" style="display:none" class="card effect__hover">
-								<div class="card__front" style="background-color:#2171b5">
+								<div class="card__front">
 									<span class="card__text">
-										<b style="font-size:14px">Liaison Officer</b>
+										Liaison Officer
 										<br />
 										<a id="liai1name">Mary Lee</a>
 										<br />
-										<b id="liai1stt" style="font-size:14px">(Available)</b>
+										<b id="liai1stt">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -355,14 +339,14 @@ include_once "mysqli.connect.php";
 								</div>
 							</div>
 
-							<div id = "liai2" style="display:none;clear:both" class="card effect__hover">
-								<div class="card__front" style="background-color:#2171b5">
+							<div id = "liai2" style="display:none" class="card effect__hover">
+								<div class="card__front">
 									<span class="card__text">
-										<b style="font-size:14px">Liaison Officer</b>
+										Liaison Officer
 										<br />
 										<a id="liai2name">Tom Lee</a>
 										<br />
-										<b id="liai2stt" style="font-size:14px">(Available)</b>
+										<b id="liai2stt">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -379,13 +363,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "liai3" style="display:none" class="card effect__hover">
-								<div class="card__front" style="background-color:#2171b5">
+								<div class="card__front">
 									<span class="card__text">
-										<b style="font-size:14px">Liaison Officer</b>
+										Liaison Officer
 										<br />
 										<a id="liai3name">Gary Lee</a>
 										<br />
-										<b id="liai3stt" style="font-size:14px">(Available)</b>
+										<b id="liai3stt">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -402,13 +386,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "comm1" style="display:none" class="card effect__hover">
-								<div class="card__front" style="background-color:#2171b5">
+								<div class="card__front">
 									<span class="card__text">
-										<b style="font-size:14px">Comms Officer</b>
+										Comms Officer
 										<br />
 										<a id="comm1name">Mary Eng</a>
 										<br />
-										<b id="comm1stt" style="font-size:14px">(Available)</b>
+										<b id="comm1stt">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -425,13 +409,13 @@ include_once "mysqli.connect.php";
 							</div>
 
 							<div id = "comm2" style="display:none" class="card effect__hover">
-								<div class="card__front" style="background-color:#2171b5">
+								<div class="card__front">
 									<span class="card__text">
-										<b style="font-size:14px">Comms Officer</b>
+										Comms Officer
 										<br />
 										<a id="comm2name">Tom Eng</a>
 										<br />
-										<b id="comm2stt" style="font-size:14px">(Available)</b>
+										<b id="comm2stt">(Available)</b>
 										<br />
 									</span>
 								</div>
@@ -472,7 +456,7 @@ include_once "mysqli.connect.php";
 				
 				<!-- Second Group of Tabs -->
 				<div class="tabs animated-fade">
-					<ul class="tab-links" style="margin-left:155px">
+					<ul class="tab-links" style="margin-left:155px;">
 						<li class="active"><a href="#tab4">Notifications</a></li>
 						<li><a href="#tab5">News</a></li>
 					</ul>
@@ -554,7 +538,7 @@ include_once "mysqli.connect.php";
 				<table>
 					<tr>
 						<td>
-							<div class="tab-content" style="width:780px;height:290px;margin:-8px 0px 0px 37px;overflow:auto;font-size:15px">
+							<div class="tab-content" style="width:780px;height:290px;margin:-8px 0px 0px 37px;overflow:auto">
 								<?php
 									$query = 'SELECT * FROM trips ORDER BY ID DESC;';
 
@@ -567,13 +551,13 @@ include_once "mysqli.connect.php";
 									if(mysqli_num_rows($result) != 0){                                
 										echo '<table border="1" id="excursionList">
 										<tr style="text-align:center">
-											<th style="padding:10px;width:230px">
+											<th style="padding:10px">
 												Excursion Name
 											</th>
-											<th style="padding:10px;width:80px">
+											<th style="padding:10px">
 												City
 											</th>
-											<th style="padding:10px;width:180px">
+											<th style="padding:10px">
 												School
 											</th>
 											<th style="padding:10px">
@@ -582,13 +566,16 @@ include_once "mysqli.connect.php";
 											<th style="padding:10px">
 												Alert Level
 											</th>
+											<th style="padding:10px">
+												Details
+											</th>
 										</tr>';
 
 										for($i = 0; $i < count($array); $i++){
 											$excursionIndex = $i + 1;
 										
 											echo '<tr>';
-											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">' . $array[$i]['Excursion'] . '</a></td>';
+											echo '<td style="padding:5px">' . $array[$i]['Excursion'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['City'] . '</td>';
 											echo '<td style="padding:5px">' . $array[$i]['School'] . '</td>';
 											echo '<td style="padding:5px">	<img src="warning.svg" width="30px"/> &nbsp; ' . $array[$i]['Notification'] . '</td>';
@@ -611,6 +598,8 @@ include_once "mysqli.connect.php";
 																	<option value="Low" style="background-color:green" selected="selected">Low</option>';
 														}
 											echo '</select></td>';
+											
+											echo '<td style="padding:5px"><a href="#openModal' . $array[$i]['ID'] . '">View</a>';
 											
 											echo '<div id="openModal' . $array[$i]['ID'] . '" class="modalDialog"><div><a href="#close" title="Close" class="close">X</a><h2>' . $array[$i]['Excursion'] . '</h2><p>' . $array[$i]['Details'] . '</p></div></div>';
 											
