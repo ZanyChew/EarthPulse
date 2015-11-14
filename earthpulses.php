@@ -250,7 +250,7 @@ include_once "mysqli.connect.php";
 								<li class="list-group-item"><b>Summary</b></li>
 							</ul>
 
-							<button type="button" style="position:absolute;left:695px;top:400px" onclick="confirmResources()" class="btn btn-success">Activate Resources</button>
+							<button type="button" style="position:absolute;left:700px;top:400px" onclick="confirmResources()" class="btn btn-success">Confirm Selection</button>
 							
 							<table>
                                 <tr>
